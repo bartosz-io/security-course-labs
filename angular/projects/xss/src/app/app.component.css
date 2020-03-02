@@ -1,0 +1,8 @@
+.product {
+  border: 1px solid gray;
+  margin-bottom: 10px;
+}
+
+button {
+  display: block;
+}

@@ -1,0 +1,17 @@
+<h1>Awesome shop</h1>
+<div>
+  <h2>Products
+    <ng-container *ngIf="searchTerm">
+      matching "{{searchTerm}}"
+    </ng-container>
+  </h2>
+
+  <div class="product"
+    *ngFor="let product of products"
+    [innerHTML]="sanitizer.bypassSecurityTrustHtml(product.value)">
+  </div>
+
+  <h3>Add new product</h3>
+  <textarea #new cols="40" rows="4"></textarea>
+  <button (click)="addProduct()">Add</button>
+</div>

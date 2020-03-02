@@ -1,0 +1,1 @@
+console.log('%c I was fetched from an external origin!', 'background: red; color: white; font-size: 20px');

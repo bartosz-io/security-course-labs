@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "policies": "nodemon policies/server.js",
+    "policies:external": "nodemon policies/external.js",
+    "xss": "nodemon xss/server.js",
+    "csrf": "nodemon csrf/server.js",
+    "csrf:evil": "nodemon csrf/evil.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "helmet-csp": "^2.9.4",
+    "nodemon": "^2.0.2"
+  }
+}

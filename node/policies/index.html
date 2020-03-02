@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="http://127.0.0.1:8081/style.css">
+  <link rel="icon" href="data:;base64,=">
+  <script src="http://127.0.0.1:8081/script.js"></script>
+</head>
+<body>
+  <h2>Hello World!</h2>
+  <img src="http://127.0.0.1:8081/ninja.png" alt="ninja">
+  <button id="callApi">Call API</button>
+  <button onclick="callExternalApi()">Call external API</button>
+  <script nonce="uasdimAsNXCzP5AG6Rvux">
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Installing event handler');
+      document.getElementById('callApi').addEventListener('click', callApi);
+    }); 
+    function callApi() {
+      fetch('http://127.0.0.1:8080/api')
+        .then((response) => response.json())
+        .then(json => console.log(json));
+    }
+    function callExternalApi() {
+      fetch('http://127.0.0.1:8081/api')
+        .then((response) => response.json())
+        .then(json => console.log(json));
+    }
+  </script>
+</body>
+</html>

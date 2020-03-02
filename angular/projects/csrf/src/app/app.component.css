@@ -1,0 +1,7 @@
+input {
+  display: block;
+}
+
+input[type="button"], button {
+  margin-top: 10px;
+}
