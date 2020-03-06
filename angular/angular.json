@@ -18,7 +18,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -41,7 +41,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -136,7 +135,7 @@
             "main": "projects/csrf/src/main.ts",
             "polyfills": "projects/csrf/src/polyfills.ts",
             "tsConfig": "projects/csrf/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/csrf/src/favicon.ico",
               "projects/csrf/src/assets"
@@ -159,7 +158,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -254,7 +252,7 @@
             "main": "projects/xss/src/main.ts",
             "polyfills": "projects/xss/src/polyfills.ts",
             "tsConfig": "projects/xss/tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "projects/xss/src/favicon.ico",
               "projects/xss/src/assets"
@@ -277,7 +275,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
