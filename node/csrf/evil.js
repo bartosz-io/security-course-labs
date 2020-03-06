@@ -7,7 +7,7 @@ app.get('/link', function(req, res) {
 });
 
 app.get('/form', function(req, res) {
-  res.sendFile(path.join(_dirname, '/evil-form.html'));
+  res.sendFile(path.join(__dirname, '/evil-form.html'));
 });
 
 app.listen(8081);
