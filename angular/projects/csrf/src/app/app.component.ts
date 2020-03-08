@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  readonly API = 'http://127.0.0.1:8080';
+  readonly API = 'http://127.0.0.1';
   view: 'LOADING' | 'LOGGED' | 'NOT_LOGGED' = 'LOADING';
   loggedUser = null;
 

