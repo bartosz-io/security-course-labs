@@ -7,7 +7,10 @@ app.use(session({
   secret: 'secret key',
   saveUninitialized: true,
   resave: false,
-  cookie: { maxAge: 3600000 }
+  cookie: {
+    sameSite: 'strict', // (lax || strict)
+    maxAge: 3600000
+   }
 }));
 app.use(cors({origin: 'http://127.0.0.1:8080'}));
 app.use(express.static('../angular/dist/csrf/'));
