@@ -1,8 +1,8 @@
 <h1>Awesome shop</h1>
 <div>
-  <h2>Products
+  <h2>Products matching
     <ng-container *ngIf="searchTerm">
-      matching "{{searchTerm}}"
+      <div [innerHTML]="sanitizer.bypassSecurityTrustHtml(searchTerm)"></div>
     </ng-container>
   </h2>
 

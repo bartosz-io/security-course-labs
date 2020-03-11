@@ -13,8 +13,7 @@ app.use(cookieSession({
 app.use(csp({
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc: ["'self'"], // "'unsafe-inline'"
-    // scriptSrc: ["'self'", "'unsafe-inline'"],
+    scriptSrc: ["'self'"],
     styleSrc: ["'self'", "'unsafe-inline'"],
     fontSrc: ["'self'", 'data:'],
     imgSrc: ["'self'", 'data:'],
@@ -41,7 +40,6 @@ const PRODUCTS = [
   {
     value: `
       Hello World!
-      <img src="xyz" style="display: none" onerror="alert('I have your cookies: ' + document.cookie);">
     `
   }
 ];
