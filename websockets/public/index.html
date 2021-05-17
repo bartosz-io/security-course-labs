@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
+  <title>WebSockets</title>
+
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    connect-src 'self' ws://127.0.0.1:8080;
+    font-src fonts.gstatic.com data:;
+    style-src 'unsafe-inline';
+    script-src 'unsafe-inline';">
+    
+</head>
+
+<body>
+  <style>
+    #status {
+      font-style: italic;
+      color: darkgray;
+    }
+  </style>
+
+  <script type="text/javascript">
+
+    const serverUri = "http://127.0.0.1:8080";
+    const wsUri = "ws://127.0.0.1:8080";
+    let websocket, status, output, msg;
+
+    function init() {
+      loginBtn = document.getElementById("login").addEventListener('click', login);
+      logoutBtn = document.getElementById("logout").addEventListener('click', logout);
+      connectBtn = document.getElementById("connect").addEventListener('click', connect);
+      disconnectBtn = document.getElementById("disconnect").addEventListener('click', () => websocket?.close());
+      sendBtn = document.getElementById("send").addEventListener('click', () => doSend(msg.value));
+
+      status = document.getElementById("status");
+      output = document.getElementById("output");
+      msg = document.getElementById("msg");
+    }
+
+    function login() {
+      fetch(`${serverUri}/login`, { method: 'POST', })
+      .then(function(response) {
+        console.log('LOGGED IN ✅');
+      })
+    }
+
+    function logout() {
+      fetch(`${serverUri}/logout`)
+      .then(function(response) {
+        console.log('LOGGED OUT ❌ ');
+      })
+    }
+
+    function connect() {
+      websocket = new WebSocket(wsUri);
+      websocket.onopen = () => setStatus("CONNECTED");
+      websocket.onclose = (e) => setStatus("DISCONNECTED");
+      websocket.onmessage = (event) => writeToScreen(`RECEIVED: ${event.data}`, "blue");
+      websocket.onerror = (event) => writeToScreen('ERROR!', "red");
+    }
+
+    function doSend(message) {
+      if (websocket?.readyState === WebSocket.OPEN) {
+        websocket.send(message);
+        writeToScreen("SENT: " + message);
+      } else {
+        writeToScreen("NOT CONNECTED", "red");
+      }
+    }
+
+    function setStatus(newStatus) {
+      status.innerHTML = newStatus;
+    }
+
+    function writeToScreen(message, color) {
+      var p = document.createElement("p");
+      p.style.color = color ? color : 'black';
+      p.innerHTML = message;
+      output.appendChild(p);
+    }
+
+    window.addEventListener("DOMContentLoaded", init, false);
+  </script>
+
+  <h2>WebSocket Test</h2>
+
+  <div>
+    <input type="button" value="Login" id="login">
+    <input type="button" value="Logout" id="logout">
+    <input type="button" value="Connect" id="connect">
+    <input type="button" value="Disconnect" id="disconnect">
+  </div>
+  <div>
+    <input type="text" name="msg" id="msg">
+    <input type="button" value="Send" id="send">
+  </div>
+  <div id="status">DISCONNECTED</div>
+  <div id="output"></div>
+
+</body>
+
+</html>
