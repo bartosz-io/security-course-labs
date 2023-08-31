@@ -12,11 +12,11 @@
   <img src="http://127.0.0.1:8081/ninja.png" alt="ninja">
   <button id="callApi">Call API</button>
   <button onclick="callExternalApi()">Call external API</button>
-  <script nonce="uasdimAsNXCzP5AG6Rvux">
+  <script nonce="uasdimAsNXCzP5AG6Rvu">
     document.addEventListener('DOMContentLoaded', () => {
       console.log('Installing event handler');
       document.getElementById('callApi').addEventListener('click', callApi);
-    }); 
+    });
     function callApi() {
       fetch('http://127.0.0.1:8080/api')
         .then((response) => response.json())
